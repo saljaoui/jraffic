@@ -21,7 +21,7 @@ public class Vehicle extends Rectangle {
         switch (direction) {
             case NORTH: 
                 setX(405);
-                setY(0);
+                setY(-45);
                 break;
             case SOUTH:
                 setX(455);
@@ -32,7 +32,7 @@ public class Vehicle extends Rectangle {
                 setY(405);
                 break;
             case WEST:
-                setX(0);
+                setX(-45);
                 setY(455);
                 break;
         }
