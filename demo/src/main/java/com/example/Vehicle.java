@@ -5,12 +5,12 @@ import javafx.scene.shape.Rectangle;
 
 public class Vehicle extends Rectangle {
 
-    private String direction; // "N", "S", "E", "W"
-    private String route;     // "straight", "left", "right"
+    private Direction direction;
+    private Route route;    
     private double velocity = 2;
     private boolean stopped = false;
 
-    public Vehicle(String direction, String route, Color color) {
+    public Vehicle(Direction direction, Route route, Color color) {
         super(40, 40, color);
         this.direction = direction;
         this.route = route;
@@ -19,21 +19,21 @@ public class Vehicle extends Rectangle {
 
     private void setInitialPosition() {
         switch (direction) {
-            case "N": 
+            case NORTH: 
                 setX(405);
                 setY(0);
                 break;
-            case "S":
-                setX(405);
+            case SOUTH:
+                setX(455);
                 setY(900);
                 break;
-            case "E":
+            case EAST:
                 setX(900);
                 setY(405);
                 break;
-            case "W":
+            case WEST:
                 setX(0);
-                setY(405);
+                setY(455);
                 break;
         }
     }
@@ -42,16 +42,16 @@ public class Vehicle extends Rectangle {
         if (stopped) return;
 
         switch (direction) {
-            case "N":
+            case NORTH:
                 setY(getY() + velocity);
                 break;
-            case "S":
+            case SOUTH:
                 setY(getY() - velocity);
                 break;
-            case "E":
+            case EAST:
                 setX(getX() - velocity);
                 break;
-            case "W":
+            case WEST:
                 setX(getX() + velocity);
                 break;
         }

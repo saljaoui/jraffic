@@ -13,20 +13,19 @@ public class App extends Application {
     public void start(Stage stage) {
         RoadPane root = new RoadPane();
         root.drawRoads();
-        
 
         scene = new Scene(root);
 
         scene.setOnKeyPressed(event -> {
             KeyCode code = event.getCode();
             if (code == KeyCode.UP) {
-                root.spawnVehicle("S");
+                root.spawnVehicle(Direction.SOUTH);
             } else if (code == KeyCode.DOWN) {
-                root.spawnVehicle("N");
+                root.spawnVehicle(Direction.NORTH);
             } else if (code == KeyCode.LEFT) {
-                root.spawnVehicle("E");
+                root.spawnVehicle(Direction.EAST);
             } else if (code == KeyCode.RIGHT) {
-                root.spawnVehicle("W");
+                root.spawnVehicle(Direction.WEST);
             } else if (code == KeyCode.R) {
                 // root.spawnVehicleRandom();
             } else if (code == KeyCode.ESCAPE) {

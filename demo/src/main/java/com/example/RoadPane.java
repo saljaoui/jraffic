@@ -17,13 +17,12 @@ public class RoadPane extends Pane {
         setStyle("-fx-background-color: black;"); // fixed color syntax
     }
     
-    public void spawnVehicle(String direction) {
-        Vehicle v = new Vehicle(direction, "left", Color.RED);
+    public void spawnVehicle(Direction direction) {
+        Vehicle v = new Vehicle(direction, Route.STRAIGHT, Color.RED);
         vehicles.add(v);
         getChildren().add(v);
     }
 
-    // Custom method to draw roads
     public void drawRoads() {
         Line verticalLine1 = new Line(400, 0, 400, 900);
         verticalLine1.setStroke(Color.WHITE);
