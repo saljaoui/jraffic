@@ -1,14 +1,26 @@
 package com.example;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import javafx.animation.AnimationTimer;
 import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Line;
 
 public class RoadPane extends Pane {
 
+    private List<Vehicle> vehicles = new ArrayList<>();
+
     public RoadPane() {
         setPrefSize(900, 900);
         setStyle("-fx-background-color: black;"); // fixed color syntax
+    }
+    
+    public void spawnVehicle(String direction) {
+        Vehicle v = new Vehicle(direction, "left", Color.RED);
+        vehicles.add(v);
+        getChildren().add(v);
     }
 
     // Custom method to draw roads
@@ -39,5 +51,18 @@ public class RoadPane extends Pane {
 
         getChildren().addAll(verticalLine1, verticalLine2, verticalLine3,
                              horizontalLine1, horizontalLine2, horizontalLine3);
+    }
+
+    public void startAnimation() {
+        AnimationTimer timer = new AnimationTimer() {
+            @Override
+            public void handle(long now) {
+                for (Vehicle v : vehicles) {
+                    v.move();
+                    // stopAtRedLight(v);
+                }
+            }
+        };
+        timer.start();
     }
 }
